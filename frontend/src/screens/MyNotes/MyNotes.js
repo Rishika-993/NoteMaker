@@ -1,6 +1,7 @@
 import MainScreen from '../../components/MainScreen'
 import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
+import notes from "../../data/notes"
 
 const MyNotes = () => {
   return (
@@ -10,15 +11,30 @@ const MyNotes = () => {
                   Create New Note
               </Button>
           </Link>
-          {/* <div className='notes'>
-              <h1>My Notes</h1>
-              <div className='note'>
-                  <h2>Note Title</h2>
-                  <p>This is a sample note content. You can edit or delete this note.</p>
-                  <button className='btn btn-primary'>Edit</button>
-                  <button className='btn btn-danger'>Delete</button>
-              </div>
-          </div> */}
+          {
+              notes.map((note) => (
+                <Card style={{ margin: 10 }}>
+                    <Card.Header style={{ display: 'flex' }}>
+                    <span
+                    style={{
+                        color: "black",
+                        textDecoration: "none",
+                        flex: 1,
+                        cursor: "pointer",
+                        alignSelf: "center",
+                        fontSize: 18,
+                    }}>
+                        {note.title}
+                    </span>
+                    <div>
+                    <Button>Edit</Button>
+                    <Button variant="danger" className='mx-2'>Delete</Button>
+                    </div>
+                    </Card.Header>
+                </Card>
+              ))
+          }
+          
       </MainScreen>
   )
 }
