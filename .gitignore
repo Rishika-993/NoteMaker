@@ -1,0 +1,49 @@
+# Node.js
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Dependency directories
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Environment variables
+.env*
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS specific files
+.DS_Store
+
+# Thumbnails
+.thumbnails/
+
+# Test results
+test-results/
