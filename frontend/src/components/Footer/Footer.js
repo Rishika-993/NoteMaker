@@ -13,7 +13,7 @@ const Footer = () => {
       }}>
           <Container>
               <Row>
-                  <Col className='text-center py-3'>
+                  <Col className='text-center text-white py-3'>
                       © 2023 Note Maker. All rights reserved.
                   </Col>
               </Row>
