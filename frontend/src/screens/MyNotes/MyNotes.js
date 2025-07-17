@@ -1,9 +1,13 @@
 import MainScreen from '../../components/MainScreen'
 import { Link } from 'react-router-dom'
-import { Button, Card } from 'react-bootstrap'
+import { Accordion, Badge, Button, Card } from 'react-bootstrap'
 import notes from "../../data/notes"
 
 const MyNotes = () => {
+    const deleteHandler = (id) => {
+        if (window.confirm("Are you sure you want to delete this note?")) {
+        }
+    };
   return (
       <MainScreen title="Welcome back ...">
           <Link to="/createnote">
@@ -27,10 +31,31 @@ const MyNotes = () => {
                         {note.title}
                     </span>
                     <div>
-                    <Button>Edit</Button>
-                    <Button variant="danger" className='mx-2'>Delete</Button>
+                    <Button href={`/note/${note._id}`}>Edit</Button>
+                    <Button
+                        variant="danger"
+                        className='mx-2'
+                        onClick={() => deleteHandler(note._id)}
+                    >
+                        Delete
+                    </Button>
                     </div>
                     </Card.Header>
+                    <Card.Body>
+                        <h4>
+                            <Badge bg="success" className='text-white'>
+                                Category - {note.category}
+                            </Badge>
+                        </h4>
+                        <blockquote className="blockquote mb-0">
+                        <p>
+                            {note.content}
+                        </p>
+                        <footer className="blockquote-footer">
+                            Created on - Date
+                        </footer>
+                        </blockquote>
+                    </Card.Body>
                 </Card>
               ))
           }
