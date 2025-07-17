@@ -6,3 +6,86 @@
     background-position: center;
     background-size: cover; 
 }
+.bg-body-tertiary{
+    border-bottom: #082746 ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.title {
+    font-size: 10vw;
+    text-align: center;
+    padding: 0 5vw;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.intro-text {
+    width: 100%;
+    text-align: center;
+    padding: 0 2vw;
+}
+
+.buttonContainer {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 0 5vw;
+}
+
+.landingbutton {
+    width: 40vw;
+    max-width: 200px;
+    min-width: 120px;
+    height: 50px;
+    font-size: 1rem;
+}
+.custom-dropdown .nav-link{
+    color: #f8f9fa !important;
+    font-size: 0.9rem;
+}
+.highlight {
+    color: #f8f9fa !important;
+    font-size: 0.9rem;
+}
+
+/* Tablet screens */
+@media only screen and (min-width: 768px) {
+    .title {
+        font-size: 4vw;
+    }
+
+    .subtitle {
+        font-size: 1.75rem;
+    }
+
+    .landingbutton {
+        width: 180px;
+        height: 55px;
+    }
+
+    .buttonContainer {
+        padding: 0 10vw;
+    }
+}
+
+/* Large desktops */
+@media only screen and (min-width: 1200px) {
+    .title {
+        font-size: 3vw;
+        padding: 0 10vw;
+    }
+
+    .landingbutton {
+        width: 200px;
+        height: 60px;
+    }
+
+    .buttonContainer {
+        padding: 0 15vw;
+    }
+}
