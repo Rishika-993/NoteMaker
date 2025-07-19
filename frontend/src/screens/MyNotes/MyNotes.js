@@ -1,10 +1,12 @@
 import MainScreen from '../../components/MainScreen'
 import { Link } from 'react-router-dom'
 import { Accordion, Badge, Button, Card } from 'react-bootstrap'
-import { useState } from 'react'
-import notes from "../../data/notes"
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const MyNotes = () => {
+
+    const [notes, setNotes] = useState([]);
     const deleteHandler = (id) => {
         if (window.confirm("Are you sure you want to delete this note?")) {
         }
@@ -18,6 +20,15 @@ const MyNotes = () => {
             [index]: !prev[index]
         }));
     };
+
+    const fetchNotes = async () => {
+        const { data } = await axios.get('/api/notes');  //destructuring the response
+        setNotes(data);
+    };
+
+    useEffect(() => {
+        fetchNotes();
+    }, []);
 
     return (
         <MainScreen title="Welcome back ...">

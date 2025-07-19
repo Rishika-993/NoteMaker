@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "nodemon backend/server.js",
+    "client": "cd frontend && npm start",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
   },
   "author": "Rishika",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "concurrently": "^9.2.0",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
