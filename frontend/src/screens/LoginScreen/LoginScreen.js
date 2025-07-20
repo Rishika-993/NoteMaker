@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import './LoginScreen.css'
 import { useState } from 'react'
 import axios from 'axios'
+import Loading from '../../components/Loading'
+import ErrorMessage from '../../components/ErrorMessage'
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -27,13 +29,14 @@ const LoginScreen = () => {
             localStorage.setItem('userInfo', JSON.stringify(data)); //store user info in local
         } catch (error) {
             setError(error.response && error.response.data.message ? error.response.data.message : error.message);
+            setLoading(false);
         }
     }
   return (
     <MainScreen title="LOG IN">
       <div className="loginContainer">
-        {/* {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-        {loading && <Loading />} */}
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+        {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="formBasicEmail" className="mb-3">
             <Form.Label>Email address</Form.Label>
