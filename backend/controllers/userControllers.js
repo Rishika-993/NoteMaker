@@ -1,5 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
+import generateToken from "../utils/generateToken.js";
 
 export const registerUser = expressAsyncHandler(async (req, res) => {
     const { name, email, password, pic } = req.body;
@@ -34,6 +35,7 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
             email: user.email,
             pic: user.pic,
             isAdmin: user.isAdmin,  
+            token: generateToken(user._id),
         });
     } else {
         res.status(400);
@@ -54,6 +56,7 @@ export const authUser = expressAsyncHandler(async (req, res) => {
             email: user.email,
             pic: user.pic,
             isAdmin: user.isAdmin,
+            token: generateToken(user._id),  //generates a JWT token
         });
     } else {
         res.status(401);
