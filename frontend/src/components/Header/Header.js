@@ -26,7 +26,10 @@ const Header = () => {
           <NavDropdown title="Rishika agarwal" id="basic-nav-dropdown" className='custom-dropdown'>
             <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item onClick={() => {
+              localStorage.removeItem('userInfo');
+              window.location.href = '/'; // Redirect to login page after logout
+            }}>
               Log Out
             </NavDropdown.Item>
           </NavDropdown>

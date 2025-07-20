@@ -6,21 +6,21 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loading from '../../components/Loading'
 import ErrorMessage from '../../components/ErrorMessage'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
-    // const history = useNavigate();
+    const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    //     if (userInfo) {
-    //         history('/mynotes'); // Redirect to MyNotes if user is already logged in
-    //     }
-    // }, [history]);
+    useEffect(() => {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        if (userInfo) {
+            history('/mynotes'); // Redirect to MyNotes if user is already logged in
+        }
+    }, [history]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -36,6 +36,7 @@ const LoginScreen = () => {
             // console.log(data);
             setLoading(false);
             localStorage.setItem('userInfo', JSON.stringify(data)); //store user info in local
+            history('/mynotes'); // Redirect to MyNotes after successful login
         } catch (error) {
             setError(error.response && error.response.data.message ? error.response.data.message : error.message);
             setLoading(false);
