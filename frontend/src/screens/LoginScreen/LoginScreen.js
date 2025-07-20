@@ -2,16 +2,25 @@ import MainScreen from '../../components/MainScreen'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './LoginScreen.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loading from '../../components/Loading'
 import ErrorMessage from '../../components/ErrorMessage'
+// import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
+    // const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+
+    // useEffect(() => {
+    //     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    //     if (userInfo) {
+    //         history('/mynotes'); // Redirect to MyNotes if user is already logged in
+    //     }
+    // }, [history]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
