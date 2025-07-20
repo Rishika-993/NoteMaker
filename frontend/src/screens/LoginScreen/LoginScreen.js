@@ -33,7 +33,7 @@ const LoginScreen = () => {
             setLoading(true);
 
             const { data } = await axios.post('/api/users/login', { email, password }, config);  //destructuring the data
-            console.log(data);
+            // console.log(data);
             setLoading(false);
             localStorage.setItem('userInfo', JSON.stringify(data)); //store user info in local
         } catch (error) {

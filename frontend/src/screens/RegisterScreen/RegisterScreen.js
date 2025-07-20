@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import ErrorMessage from '../../components/ErrorMessage';
 import axios from 'axios';
 import Loading from '../../components/Loading';
+import './RegisterScreen.css';
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ const RegisterScreen = () => {
         };
         setLoading(true);
         const { data } = await axios.post('/api/users/', { name, email, password, pic }, config);  //destructuring the data
-        console.log(data);
+        // console.log(data);
         setLoading(false);
         localStorage.setItem('userInfo', JSON.stringify(data)); //store user info in local
       } catch (error) {
@@ -41,7 +42,40 @@ const RegisterScreen = () => {
         setLoading(false);
       }
     }
-    console.log(email);
+    // console.log(email);
+  }
+
+  const picDetails = (pics) => {
+    if (!pics) {
+      return setPicMessage("Please select an image");
+    }
+
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "Note Maker");
+      data.append("cloud_name", "dbd4ideuq");
+      fetch("https://api.cloudinary.com/v1_1/dbd4ideuq/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.secure_url) {
+            setPic(data.secure_url.toString());
+            setPicMessage(null);
+          } else {
+            setPicMessage("Image upload failed. Try again.");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setPicMessage("Image upload failed, please try again.");
+        });
+    } else {
+      return setPicMessage("Please select an image file (jpeg or png)");
+    }
   }
   return (
     <MainScreen title="REGISTER">
@@ -90,13 +124,13 @@ const RegisterScreen = () => {
             />
           </Form.Group>
 
-          {/* {picMessage && (
+          {picMessage && (
             <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
-          )} */}
+          )}
           <Form.Group controlId="pic" className="mb-3">
             <Form.Label>Profile Picture</Form.Label>
             <Form.Control
-              // onChange={(e) => postDetails(e.target.files[0])}
+              onChange={(e) => picDetails(e.target.files[0])}
               type="file"
               accept="image/png, image/jpeg"
             />
