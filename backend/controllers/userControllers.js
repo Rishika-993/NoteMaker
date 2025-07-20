@@ -41,3 +41,22 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
     }
 
 });
+
+export const authUser = expressAsyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if(user && (await user.matchPassword(password))) {     //these are mongoose method to check and verify, this method return true if password matches
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            pic: user.pic,
+            isAdmin: user.isAdmin,
+        });
+    } else {
+        res.status(401);
+        throw new Error('Invalid email or password');
+    }
+});
