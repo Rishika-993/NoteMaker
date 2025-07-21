@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MainScreen from '../../components/MainScreen'
 import { Button, Col, Form, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ErrorMessage from '../../components/ErrorMessage';
-import axios from 'axios';
+// import axios from 'axios';
 import Loading from '../../components/Loading';
 import './RegisterScreen.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../actions/userActions';
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -17,8 +19,18 @@ const RegisterScreen = () => {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [picMessage, setPicMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+
+  const history = useNavigate();
+  const dispatch = useDispatch();
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo) {
+      history('/mynotes'); // Redirect to MyNotes if user is already logged in
+    }
+  }, [history, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -26,23 +38,8 @@ const RegisterScreen = () => {
       setMessage("Passwords do not match");
     } else {
       setMessage(null);
-      try {
-        const config = {
-          headers: {
-            'Content-type': 'application/json',
-          }
-        };
-        setLoading(true);
-        const { data } = await axios.post('/api/users/', { name, email, password, pic }, config);  //destructuring the data
-        // console.log(data);
-        setLoading(false);
-        localStorage.setItem('userInfo', JSON.stringify(data)); //store user info in local
-      } catch (error) {
-        setError(error.response.data.message);
-        setLoading(false);
-      }
+      dispatch(register(name, email, password, pic));
     }
-    // console.log(email);
   }
 
   const picDetails = (pics) => {
