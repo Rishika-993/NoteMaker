@@ -3,44 +3,31 @@ import { Button, Col, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './LoginScreen.css'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import Loading from '../../components/Loading'
 import ErrorMessage from '../../components/ErrorMessage'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../../actions/userActions'
 
 const LoginScreen = () => {
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+    const userLogin = useSelector((state) => state.userLogin);
+    const { loading, error, userInfo } = userLogin;
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         if (userInfo) {
             history('/mynotes'); // Redirect to MyNotes if user is already logged in
         }
-    }, [history]);
+    }, [history, userInfo]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        try {
-            const config = {         //whenever api takes json request, we need to set the headers
-                headers: {
-                    'Content-type': 'application/json',
-                }
-            };
-            setLoading(true);
-
-            const { data } = await axios.post('/api/users/login', { email, password }, config);  //destructuring the data
-            // console.log(data);
-            setLoading(false);
-            localStorage.setItem('userInfo', JSON.stringify(data)); //store user info in local
-            history('/mynotes'); // Redirect to MyNotes after successful login
-        } catch (error) {
-            setError(error.response && error.response.data.message ? error.response.data.message : error.message);
-            setLoading(false);
-        }
+        dispatch(login(email, password));
     }
   return (
     <MainScreen title="LOG IN">

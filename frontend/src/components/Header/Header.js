@@ -1,7 +1,19 @@
 import { Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '../../actions/userActions';
 
 const Header = () => {
+  const history = useNavigate();
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    localStorage.removeItem('userInfo'); // Remove user info from local storage
+    history('/'); // Redirect to login page after logout
+  };
   return (
     <Navbar expand="lg" bg='primary' variant='dark' className="bg-body-tertiary">
     <Container>
