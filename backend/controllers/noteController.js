@@ -52,5 +52,23 @@ const updateNote = asyncHandler(async (req, res) => {
     }
 });
 
+const deleteNote = asyncHandler(async (req, res) => {
+    const note = await Note.findById(req.params.id);
+    // if(note.user.toString() !== req.user._id.toString()) {
+    //     res.status(401);
+    //     throw new Error('User not authorized to update this note');
+    // }
+    if (note) { 
+        if(note.user.toString() !== req.user._id.toString()) {
+            res.status(401);
+            throw new Error('User not authorized to delete this note');
+        }
+        await note.deleteOne();
+        res.json({ message: 'Note removed' });
+    } else {
+        res.status(404);
+        throw new Error('Note not found');
+    }
+});
 
-export { getNotes, createNote, getNotesById, updateNote };
+export { getNotes, createNote, getNotesById, updateNote, deleteNote };
