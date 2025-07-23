@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
-import { notesCreateReducer, notesListReducer } from './reducers/notesReducers';
+import { notesCreateReducer, notesDeleteReducer, notesListReducer, notesUpdateReducer } from './reducers/notesReducers';
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
@@ -15,7 +15,9 @@ const store = configureStore({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     notesList: notesListReducer,
-    notesCreate: notesCreateReducer
+    notesCreate: notesCreateReducer,
+    notesUpdate: notesUpdateReducer,
+    notesDelete: notesDeleteReducer,
   },
   preloadedState,
   // DevTools are automatically enabled in development

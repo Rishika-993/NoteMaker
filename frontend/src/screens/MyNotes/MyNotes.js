@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Accordion, Badge, Button, Card } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { listNotes } from '../../actions/notesActions'
+import { deleteNote, listNotes } from '../../actions/notesActions'
 import Loading from '../../components/Loading'
 import ErrorMessage from '../../components/ErrorMessage'
+import ReactMarkdown from 'react-markdown'
 
 const MyNotes = () => {
     const dispatch = useDispatch();
@@ -20,8 +21,15 @@ const MyNotes = () => {
     const notesCreate = useSelector((state) => state.notesCreate);
     const { success: successCreate } = notesCreate;
 
+    const notesUpdate = useSelector((state) => state.notesUpdate);
+    const { success: successUpdate } = notesUpdate;
+
+    const notesDelete = useSelector((state) => state.notesDelete);
+    const { loading: loadingDelete, error: errorDelete , success: successDelete} = notesDelete;
+    
     const deleteHandler = (id) => {
         if (window.confirm("Are you sure you want to delete this note?")) {
+            dispatch(deleteNote(id));
         }
     };
 
@@ -39,7 +47,7 @@ const MyNotes = () => {
         if(!userInfo) {
             history('/'); // Redirect to login if user is not logged in
         }
-    }, [dispatch, history, userInfo, successCreate]);
+    }, [dispatch, history, userInfo, successCreate, successUpdate, successDelete]);
 
     return (
         <MainScreen title={`Welcome back ${userInfo.name}...`}>
@@ -48,6 +56,8 @@ const MyNotes = () => {
                     Create New Note
                 </Button>
             </Link>
+            {errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
+            {loadingDelete && <Loading />}
             {loading && <Loading />}
             {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
             {[...notes]?.reverse().map((note, index) => (
@@ -86,7 +96,7 @@ const MyNotes = () => {
                                     </Badge>
                                 </h4>
                                 <blockquote className="blockquote mb-0">
-                                    <p>{note.content}</p>
+                                    <ReactMarkdown>{note.content}</ReactMarkdown>
                                     <footer className="blockquote-footer">
                                         Created on {" "}
                                         <cite title="Source Title">
