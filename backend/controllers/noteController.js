@@ -23,4 +23,14 @@ const createNote = asyncHandler(async (req, res) => {
     }
 }); 
 
-export { getNotes, createNote };
+const getNotesById = asyncHandler(async (req, res) => {
+    const note = await Note.findById(req.params.id);   //fetching id from url params
+    if (note) {
+        res.json(note);
+    } else {
+        res.status(404);
+        throw new Error('Note not found');
+    }
+}); 
+
+export { getNotes, createNote, getNotesById };
