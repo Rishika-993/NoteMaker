@@ -17,6 +17,9 @@ const MyNotes = () => {
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
+    const notesCreate = useSelector((state) => state.notesCreate);
+    const { success: successCreate } = notesCreate;
+
     const deleteHandler = (id) => {
         if (window.confirm("Are you sure you want to delete this note?")) {
         }
@@ -31,17 +34,12 @@ const MyNotes = () => {
         }));
     };
 
-    // const fetchNotes = async () => {
-    //     const { data } = await axios.get('/api/notes');  //destructuring the response
-    //     setNotes(data);
-    // };
-
     useEffect(() => {
         dispatch(listNotes());
         if(!userInfo) {
             history('/'); // Redirect to login if user is not logged in
         }
-    }, [dispatch]);
+    }, [dispatch, history, userInfo, successCreate]);
 
     return (
         <MainScreen title={`Welcome back ${userInfo.name}...`}>
@@ -52,7 +50,7 @@ const MyNotes = () => {
             </Link>
             {loading && <Loading />}
             {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-            {notes?.map((note, index) => (
+            {[...notes]?.reverse().map((note, index) => (
                 <Card style={{ margin: 10 }} key={note._id}>
                     <Card.Header style={{ display: 'flex', alignItems: 'center' }}>
                         <span
