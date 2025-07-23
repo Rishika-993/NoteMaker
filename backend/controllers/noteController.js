@@ -33,4 +33,24 @@ const getNotesById = asyncHandler(async (req, res) => {
     }
 }); 
 
-export { getNotes, createNote, getNotesById };
+const updateNote = asyncHandler(async (req, res) => {
+    const { title, content, category } = req.body;
+    const note = await Note.findById(req.params.id);
+    if(note.user.toString() !== req.user._id.toString()) {
+        res.status(401);
+        throw new Error('User not authorized to update this note');
+    }
+    if (note) {
+        note.title = title || note.title;
+        note.content = content || note.content;
+        note.category = category || note.category;
+        const updatedNote = await note.save();
+        res.json(updatedNote);
+    } else {
+        res.status(404);
+        throw new Error('Note not found');
+    }
+});
+
+
+export { getNotes, createNote, getNotesById, updateNote };
