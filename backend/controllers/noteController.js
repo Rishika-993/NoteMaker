@@ -2,8 +2,25 @@ import Note from "../models/noteModel.js";
 import asyncHandler from "express-async-handler";
 
 const getNotes = asyncHandler(async (req, res) => {
-    const notes = await Note.find();   //find notes that belong to a particular user
+    const notes = await Note.find({ user: req.user._id });   //find notes that belong to a particular user
     res.json(notes);
 });
 
-export { getNotes };
+const createNote = asyncHandler(async (req, res) => {
+    const { title, content, category } = req.body;
+    if (!title || !content || !category) {
+        res.status(400);
+        throw new Error('Please fill all the fields');
+    } else {
+        const note = new Note({
+            user: req.user._id,  //user id from the token
+            title,
+            content,
+            category,
+        });
+        const createdNote = await note.save();
+        res.status(201).json(createdNote);
+    }
+}); 
+
+export { getNotes, createNote };
