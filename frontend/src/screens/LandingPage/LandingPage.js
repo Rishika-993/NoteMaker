@@ -3,6 +3,7 @@ import './LandingPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
+import { use, useEffect } from 'react';
 
 export const LandingPage = () => {
     const history = useNavigate();
@@ -15,6 +16,12 @@ export const LandingPage = () => {
       localStorage.removeItem('userInfo'); // Remove user info from local storage
       history('/'); // Redirect to login page after logout
     };
+
+    // useEffect(() => {
+    //     if (userInfo) {
+    //         history('/mynotes'); // Redirect to My Notes if user is logged in
+    //     }
+    // }, [userInfo, history]);
   return (
       <div className='main'>
           <Container>
