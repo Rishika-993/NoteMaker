@@ -14,7 +14,7 @@ const Footer = () => {
           <Container>
               <Row>
                   <Col className='text-center text-white py-3'>
-                      © 2023 Note Maker. All rights reserved.
+                      © 2025 Note Maker. All rights reserved.
                   </Col>
               </Row>
           </Container>

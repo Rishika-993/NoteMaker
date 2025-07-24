@@ -35,35 +35,45 @@ const ProfileScreen = () => {
     }
   }, [history, userInfo]);
 
-  const postDetails = (pics) => {
+    const postDetails = (pics) => {
     setPicMessage(null);
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
-      const data = new FormData();
-      data.append("file", pics);
-      data.append("upload_preset", "Note Maker");
-      data.append("cloud_name", "dbd4ideuq");
-      fetch("https://api.cloudinary.com/v1_1/dbd4ideuq/image/upload", {
-        method: "post",
-        body: data,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-            const url = data.url.toString();
-            setPic(url);
-            console.log(url); 
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      return setPicMessage("Please Select an Image");
+        if (pics.type === "image/jpeg" || pics.type === "image/png") {
+            const data = new FormData();
+            data.append("file", pics);
+            data.append("upload_preset", "Note Maker");
+            data.append("cloud_name", "dbd4ideuq");
+            fetch("https://api.cloudinary.com/v1_1/dbd4ideuq/image/upload", {
+                method: "post",
+                body: data,
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    // console.log(data);
+                    if (data.secure_url) {
+                        setPic(data.secure_url.toString());
+                        setPicMessage(null);
+                    } else {
+                        setPicMessage("Image upload failed. Try again.");
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    setPicMessage("Image upload failed, please try again.");
+                });
+        } else {
+            return setPicMessage("Please select an image file (jpeg or png)");
+        }
     }
-  };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if(password === confirmPassword)
-    dispatch(updateUserProfile({ name, email, password, pic }));
+    if (password !== confirmPassword) return;
+
+    if (pic && pic.startsWith("http")) {
+      dispatch(updateUserProfile({ name, email, password, pic }));
+    } else {
+      setPicMessage("Image not uploaded yet. Please wait.");
+    }
   };
 
   return (

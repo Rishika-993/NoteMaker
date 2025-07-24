@@ -58,7 +58,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
     }
 }
 
-export const updateUserProfile = (name) => async (dispatch, getState) => {
+export const updateUserProfile = (user) => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_UPDATE_REQUEST });
 
@@ -71,7 +71,7 @@ export const updateUserProfile = (name) => async (dispatch, getState) => {
             },
         };
 
-        const { data } = await axios.post('/api/users/profile', name , config);
+        const { data } = await axios.post('/api/users/profile', user , config);
 
         dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
         dispatch({ type: USER_LOGIN_SUCCESS, payload: data }); // Update user info in the store
