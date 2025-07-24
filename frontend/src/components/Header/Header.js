@@ -32,7 +32,7 @@ const Header = ({setSearch}) => {
                     />
                 </Form>
             </Nav>
-        <Nav>
+        { userInfo?<Nav>
         <Nav.Link as={Link} to="/mynotes" className='highlight'>
           My Notes
         </Nav.Link>
@@ -43,7 +43,14 @@ const Header = ({setSearch}) => {
               Log Out
             </NavDropdown.Item>
           </NavDropdown>
-        </Nav>
+          </Nav> : <Nav>
+            <Nav.Link as={Link} to="/login">
+              Login
+            </Nav.Link>
+            <Nav.Link as={Link} to="/register">
+              Register
+            </Nav.Link>
+          </Nav>}
       </Navbar.Collapse>
     </Container>
   </Navbar>
