@@ -8,7 +8,7 @@ import Loading from '../../components/Loading'
 import ErrorMessage from '../../components/ErrorMessage'
 import ReactMarkdown from 'react-markdown'
 
-const MyNotes = () => {
+const MyNotes = ({search}) => {
     const dispatch = useDispatch();
     const history = useNavigate();
 
@@ -60,7 +60,7 @@ const MyNotes = () => {
             {loadingDelete && <Loading />}
             {loading && <Loading />}
             {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-            {[...notes]?.reverse().map((note, index) => (
+            {[...notes]?.reverse().filter(filteredNote => filteredNote.title.toLowerCase().includes(search.toLowerCase())).map((note, index) => (
                 <Card style={{ margin: 10 }} key={note._id}>
                     <Card.Header style={{ display: 'flex', alignItems: 'center' }}>
                         <span

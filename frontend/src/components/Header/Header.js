@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
 
-const Header = () => {
+const Header = ({setSearch}) => {
   const history = useNavigate();
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
@@ -27,7 +27,8 @@ const Header = () => {
                     <Form.Control
                         type="text"
                         placeholder="Search"
-                        className=" mr-sm-2"
+                className=" mr-sm-2"
+                onChange={(e) => setSearch(e.target.value)}
                     />
                 </Form>
             </Nav>
