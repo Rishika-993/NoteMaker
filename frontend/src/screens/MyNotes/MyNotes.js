@@ -43,14 +43,15 @@ const MyNotes = ({search}) => {
     };
 
     useEffect(() => {
-        dispatch(listNotes());
-        if(!userInfo) {
-            history('/'); // Redirect to login if user is not logged in
+        if (!userInfo) {
+            history('/');
+        } else {
+            dispatch(listNotes());
         }
     }, [dispatch, history, userInfo, successCreate, successUpdate, successDelete]);
 
     return (
-        <MainScreen title={`Welcome back ${userInfo.name}...`}>
+        <MainScreen title={`Welcome back ${userInfo?.name || ""}...`}>
             <Link to="/createnote">
                 <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
                     Create New Note

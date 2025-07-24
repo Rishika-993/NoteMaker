@@ -26,7 +26,7 @@ const RegisterScreen = () => {
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    // const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo) {
       history('/mynotes'); // Redirect to MyNotes if user is already logged in
     }

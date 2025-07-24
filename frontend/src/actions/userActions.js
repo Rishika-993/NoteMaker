@@ -45,6 +45,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
         const { data } = await axios.post('/api/users/', { name, email, password, pic }, config);
 
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+        dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 
         localStorage.setItem('userInfo', JSON.stringify(data)); // Store user info in local storage
     } catch (error) {
