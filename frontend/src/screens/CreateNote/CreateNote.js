@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import MainScreen from "../../components/MainScreen";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,8 +35,6 @@ function CreateNote() {
     resetHandler();
     history("/mynotes");
   };
-
-//   useEffect(() => {}, []);
 
   return (
     <MainScreen title="Create a Note">

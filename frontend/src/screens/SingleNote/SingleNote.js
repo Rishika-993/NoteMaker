@@ -44,7 +44,7 @@ function SingleNote() {
       setDate(data.updatedAt);
     };
     fetchNote();
-  }, [id]);
+  }, [id, userInfo]);
 
   const resetHandler = () => {
     setTitle("");

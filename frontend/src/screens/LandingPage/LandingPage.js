@@ -3,7 +3,7 @@ import './LandingPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
-import { use, useEffect } from 'react';
+// import { useEffect } from 'react';
 
 export const LandingPage = () => {
     const history = useNavigate();
