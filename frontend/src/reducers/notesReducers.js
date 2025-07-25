@@ -1,4 +1,4 @@
-import { NOTES_CREATE_FAIL, NOTES_CREATE_REQUEST, NOTES_CREATE_SUCCESS, NOTES_DELETE_FAIL, NOTES_DELETE_REQUEST, NOTES_DELETE_SUCCESS, NOTES_LIST_FAIL, NOTES_LIST_REQUEST, NOTES_LIST_SUCCESS, NOTES_UPDATE_REQUEST } from "../constants/notesConstants";
+import { NOTES_CREATE_FAIL, NOTES_CREATE_REQUEST, NOTES_CREATE_SUCCESS, NOTES_DELETE_FAIL, NOTES_DELETE_REQUEST, NOTES_DELETE_SUCCESS, NOTES_LIST_FAIL, NOTES_LIST_REQUEST, NOTES_LIST_SUCCESS, NOTES_UPDATE_REQUEST, NOTES_UPDATE_RESET } from "../constants/notesConstants";
 
 export const notesListReducer = (state = { notes: [] }, action) => {
     switch (action.type) {
@@ -33,7 +33,9 @@ export const notesUpdateReducer = (state = {}, action) => {
         case NOTES_CREATE_SUCCESS:
             return { loading: false, success: true };
         case NOTES_CREATE_FAIL:
-            return { loading: false, error: action.payload , success: false };
+            return { loading: false, error: action.payload, success: false };
+        case NOTES_UPDATE_RESET:
+            return {};
         default:
             return state;
     }
