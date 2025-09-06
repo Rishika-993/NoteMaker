@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap');
 
 .mainback{
-    min-height: 93vh;
+    min-height: 85vh;
     display: flex;
-    padding: 10px 0;
+    padding: 55px 0;
 }
 
 .page{
@@ -13,7 +13,11 @@
 .heading{
     font-size: 60px;
     font-family: "Work Sans", sans-serif;
-    padding: 5px 10px;
+    padding: 55px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 @media only screen and (max-width: 600px) {

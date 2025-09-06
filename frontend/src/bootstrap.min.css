@@ -11,7 +11,250 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap);
+/* Update the Google Fonts import to include more font options */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Enhanced Navbar Styling with Increased Height */
+.custom-navbar {
+    min-height: 5rem !important;
+    /* padding: 1rem 0 !important;
+    background: rgba(10, 10, 15, 0.95) !important;
+    backdrop-filter: blur(30px) !important;
+    border-bottom: 3px solid rgba(90, 103, 216, 0.3) !important;
+    box-shadow: 
+        0 2px 25px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(90, 103, 216, 0.15) !important; */
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1050 !important;
+    /* Limited width and centering */
+    width: 90% !important;
+    max-width: 1200px !important;
+
+    /* Enhanced glassmorphism effect */
+    background: rgba(10, 10, 15, 0.85) !important;
+    backdrop-filter: blur(30px) !important;
+    border: 2px solid rgba(90, 103, 216, 0.3) !important;
+    border-radius: 20px !important;
+
+    /* Enhanced shadow for floating effect */
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(90, 103, 216, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* .custom-navbar:hover {
+    border-bottom-color: rgba(90, 103, 216, 0.5) !important;
+    box-shadow: 
+        0 2px 30px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(90, 103, 216, 0.2) !important;
+} */
+
+/* Enhanced Brand Styling */
+.custom-brand {
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 15px rgba(90, 103, 216, 0.5) !important;
+    padding: 0.75rem 0 !important;
+    transition: all 0.3s ease !important;
+    letter-spacing: 0.5px !important;
+}
+
+.custom-brand:hover {
+    color: #9fa8ff !important;
+    text-shadow: 0 0 20px rgba(159, 168, 255, 0.7) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Enhanced Nav Links */
+.custom-nav-link {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 0.75rem 1.25rem !important;
+    margin: 0 0.25rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px !important;
+}
+
+.custom-nav-link:hover {
+    color: #ffffff !important;
+    background: rgba(90, 103, 216, 0.2) !important;
+    text-shadow: 0 0 10px rgba(159, 168, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+.custom-nav-link.active {
+    color: #9fa8ff !important;
+    background: rgba(90, 103, 216, 0.3) !important;
+}
+
+/* Enhanced Dropdown Styling */
+.custom-dropdown .dropdown-toggle {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 0.75rem 1.25rem !important;
+    margin: 0 0.25rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.custom-dropdown .dropdown-toggle:hover {
+    color: #ffffff !important;
+    background: rgba(90, 103, 216, 0.2) !important;
+    text-shadow: 0 0 10px rgba(159, 168, 255, 0.6) !important;
+}
+
+.custom-dropdown .dropdown-toggle::after {
+    margin-left: 0.5rem !important;
+    color: #9fa8ff !important;
+}
+
+/* Enhanced Dropdown Menu */
+.custom-dropdown .dropdown-menu {
+    background: rgba(10, 10, 15, 0.95) !important;
+    border: 2px solid rgba(90, 103, 216, 0.3) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(90, 103, 216, 0.2) !important;
+    margin-top: 0.5rem !important;
+    min-width: 200px !important;
+}
+
+.custom-dropdown-item {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 0.75rem 1.5rem !important;
+    transition: all 0.3s ease !important;
+    border-radius: 8px !important;
+    margin: 0.25rem 0.5rem !important;
+}
+
+.custom-dropdown-item:hover {
+    color: #ffffff !important;
+    background: rgba(90, 103, 216, 0.3) !important;
+    text-shadow: 0 0 8px rgba(159, 168, 255, 0.5) !important;
+    transform: translateX(5px) !important;
+}
+
+/* Enhanced Search Input */
+.custom-search {
+    background: rgba(45, 55, 72, 0.8) !important;
+    border: 2px solid rgba(90, 103, 216, 0.3) !important;
+    border-radius: 25px !important;
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    padding: 0.75rem 1.25rem !important;
+    min-width: 300px !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.custom-search:focus {
+    background: rgba(45, 55, 72, 0.9) !important;
+    border-color: #5a67d8 !important;
+    color: #ffffff !important;
+    box-shadow: 
+        0 0 0 3px rgba(90, 103, 216, 0.25),
+        0 0 15px rgba(90, 103, 216, 0.3) !important;
+    transform: scale(1.02) !important;
+}
+
+.custom-search::placeholder {
+    color: #a0aec0 !important;
+    font-style: italic !important;
+}
+
+/* Navbar Toggler Enhancement */
+.custom-navbar .navbar-toggler {
+    border: 2px solid rgba(90, 103, 216, 0.4) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.custom-navbar .navbar-toggler:hover {
+    border-color: rgba(90, 103, 216, 0.6) !important;
+    background: rgba(90, 103, 216, 0.1) !important;
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 991.98px) {
+    .custom-navbar {
+        min-height: 70px !important;
+        padding: 0.75rem 0 !important;
+    }
+    
+    .custom-brand {
+        font-size: 1.6rem !important;
+    }
+    
+    .custom-search {
+        min-width: 250px !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .custom-nav-link {
+        margin: 0.25rem 0 !important;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .custom-navbar {
+        min-height: 65px !important;
+        padding: 0.5rem 0 !important;
+    }
+    
+    .custom-brand {
+        font-size: 1.4rem !important;
+    }
+    
+    .custom-search {
+        min-width: 200px !important;
+    }
+}
+
+/* Animation for navbar collapse */
+.navbar-collapse {
+    transition: all 0.3s ease !important;
+}
+
+/* Highlight effect for active page */
+.highlight {
+    background: linear-gradient(135deg, rgba(90, 103, 216, 0.2), rgba(159, 168, 255, 0.1)) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 10px rgba(90, 103, 216, 0.3) !important;
+}
+
+/* Divider styling in dropdown */
+.custom-dropdown .dropdown-divider {
+    border-top: 1px solid rgba(90, 103, 216, 0.3) !important;
+    margin: 0.5rem 1rem !important;
+}
+
+/* Smooth scrolling when navbar is fixed */
+html {
+    scroll-padding-top: 100px !important;
+}
 
 :root {
     --blue: #158cba;
@@ -200,12 +443,9 @@ a:not([href]):not([class]):hover {
     text-decoration: none;
 }
 
-code,
-kbd,
-pre,
-samp {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-        "Courier New", monospace;
+/* Update code/monospace elements */
+code, kbd, pre, samp {
+    font-family: var(--font-family-monospace);
     font-size: 1em;
 }
 
@@ -382,51 +622,44 @@ template {
     display: none !important;
 }
 
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Update heading fonts with better weight distribution */
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-family: var(--font-family-sans-serif);
+    font-weight: 600; /* Slightly heavier for better hierarchy */
     line-height: 1.2;
+    color: #ffffff;
 }
 
-.h1,
-h1 {
+.h1, h1 {
     font-size: 2.1875rem;
+    font-weight: 700; /* Bold for main titles */
 }
 
-.h2,
-h2 {
+.h2, h2 {
     font-size: 1.75rem;
+    font-weight: 600;
 }
 
-.h3,
-h3 {
+.h3, h3 {
     font-size: 1.53125rem;
+    font-weight: 600;
 }
 
-.h4,
-h4 {
+.h4, h4 {
     font-size: 1.3125rem;
+    font-weight: 500;
 }
 
-.h5,
-h5 {
+.h5, h5 {
     font-size: 1.09375rem;
+    font-weight: 500;
 }
 
-.h6,
-h6 {
+.h6, h6 {
     font-size: 0.875rem;
+    font-weight: 500;
 }
 
 .lead {
@@ -2312,6 +2545,7 @@ pre code {
     border: 0;
 }
 
+/* Update form control fonts */
 .form-control {
     display: block;
     width: 100%;
@@ -2320,6 +2554,7 @@ pre code {
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
+    font-family: var(--font-family-sans-serif);
     color: #555;
     background-color: #fff;
     background-clip: padding-box;
@@ -2345,11 +2580,11 @@ pre code {
 }
 
 .form-control:focus {
-    color: #555;
-    background-color: #fff;
-    border-color: #61c6ed;
+    color: #ffffff;
+    background-color: rgba(45, 55, 72, 0.9);
+    border-color: #5a67d8;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(21, 140, 186, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(90, 103, 216, 0.25);
 }
 
 .form-control::-webkit-input-placeholder {
@@ -2898,37 +3133,35 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #158cba;
-    border-color: #158cba;
+    background-color: #5a67d8;
+    border-color: #5a67d8;
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #117298;
-    border-color: #106a8c;
+    background-color: #3c4aa1;
+    border-color: #3c4aa1;
 }
 
 .btn-primary.focus,
 .btn-primary:focus {
     color: #fff;
-    background-color: #117298;
-    border-color: #106a8c;
-    box-shadow: 0 0 0 0.2rem rgba(56, 157, 196, 0.5);
-}
-
-.btn-primary.disabled,
-.btn-primary:disabled {
-    color: #fff;
-    background-color: #158cba;
-    border-color: #158cba;
+    background-color: #3c4aa1;
+    border-color: #3c4aa1;
+    box-shadow: 0 0 0 0.2rem rgba(90, 103, 216, 0.5);
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #106a8c;
-    border-color: #0f6181;
+    background-color: #3c4aa1;
+    border-color: #3c4aa1;
+}
+
+/* UPDATE the bottom border color for buttons: */
+.btn-primary {
+    border-color: #3c4aa1;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -7358,7 +7591,17 @@ a.close.disabled {
 }
 
 .bg-primary {
-    background-color: #158cba !important;
+    background: linear-gradient(90deg, #656EDB 0%, #3c4aa1 100%) !important;
+    background: linear-gradient(180deg, #3c4aa1 0%, #656EDB 100%) !important;
+    /* background: var(--color-bg); */
+    border-color: #0a0a0f !important;
+}
+
+a.bg-primary:focus,
+a.bg-primary:hover,
+button.bg-primary:focus,
+button.bg-primary:hover {
+    background-color: #3c4aa1 !important;
 }
 
 a.bg-primary:focus,
@@ -11525,7 +11768,9 @@ a.text-dark:hover {
 }
 
 .btn-primary {
-    border-color: #127ba3;
+    color: #fff;
+    background-color: #5a67d8;
+    border-color: #3c4aa1;
 }
 
 .btn-secondary {

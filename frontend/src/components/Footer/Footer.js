@@ -9,7 +9,7 @@ const Footer = () => {
         bottom: 0,
         display: "flex",
           justifyContent: "center",
-          background: "#158cba"
+          background: "#4451B3"
       }}>
           <Container>
               <Row>
