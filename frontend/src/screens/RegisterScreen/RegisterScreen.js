@@ -75,7 +75,7 @@ const RegisterScreen = () => {
     }
   }
   return (
-    <MainScreen title="REGISTER">
+    <MainScreen title="REGISTER" variant="centered">
       <div className="loginContainer">
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}

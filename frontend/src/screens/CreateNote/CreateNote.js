@@ -37,7 +37,7 @@ function CreateNote() {
   };
 
   return (
-    <MainScreen title="Create a Note">
+    <MainScreen title="Create a Note" variant="full">
       <Card>
         <Card.Header>Create a new Note</Card.Header>
         <Card.Body>

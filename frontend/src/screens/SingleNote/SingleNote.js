@@ -68,7 +68,7 @@ function SingleNote() {
   };
 
   return (
-    <MainScreen title="Edit Note">
+    <MainScreen title="Edit Note" variant="full">
       <Card>
         <Card.Header>Edit your Note</Card.Header>
         <Card.Body>

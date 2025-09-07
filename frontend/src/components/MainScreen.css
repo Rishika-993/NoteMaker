@@ -40,7 +40,7 @@
     opacity: 0.7;
 }
 
-/* Clean content wrapper - centered container */
+/* Default content wrapper - centered container for auth pages */
 .content-wrapper {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(90, 103, 216, 0.15);
@@ -56,17 +56,38 @@
     display: block;
 }
 
+.content-wrapper.full {
+    max-width: 1200px;
+    /* Match navbar max-width */
+    width: 90%;
+    /* Match navbar width percentage */
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    padding: 0 1.5rem;
+    /* Add horizontal padding like navbar */
+    margin: 0 auto;
+    /* Center it like navbar */
+}
 .content-wrapper:hover {
     border-color: rgba(90, 103, 216, 0.25);
     background: rgba(255, 255, 255, 0.03);
 }
 
+/* Don't apply hover effects to full width variant */
+.content-wrapper.full:hover {
+    border-color: transparent;
+    background: transparent;
+}
+
+/* Full width page variant */
+.page.full hr {
+    width: 80%;
+    max-width: 500px;
+}
+
 /* Responsive adjustments */
 @media only screen and (max-width: 768px) {
-    /* .mainback {
-        padding: 100px 0 40px 0;
-    } */
-    
     .heading {
         padding: 1.5rem 0.5rem;
     }
@@ -76,9 +97,18 @@
         border-radius: 10px;
     }
     
+    .content-wrapper.full {
+        width: 95%;
+        padding: 0 1.25rem;
+    }
+
     .page hr {
         width: 80%;
         margin: 0 auto 1.5rem auto;
+    }
+    
+    .page.full hr {
+        width: 90%;
     }
 }
 
@@ -94,6 +124,11 @@
     .content-wrapper {
         max-width: 400px;
         border-radius: 8px;
+    }
+    
+    .content-wrapper.full {
+        width: 98%;
+        padding: 0 1rem; 
     }
 }
 

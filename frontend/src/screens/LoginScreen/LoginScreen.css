@@ -5,6 +5,8 @@
     align-items: center;
     color: var(--color-text-light, #fff);
     /* width: 100%; */
+    /* border: 1px solid rgba(90, 103, 216, 0.15); */
+    /* border-radius: 12px; */
     margin: 0 auto;
     padding: 2rem;
     gap: 20px;

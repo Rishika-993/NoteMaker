@@ -1,0 +1,216 @@
+/* Enhanced MyNotes Styling with Indigo Theme */
+.notes-container {
+    padding: 0;
+}
+
+.create-note-section {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.create-note-btn {
+    background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 0.875rem 1.5rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(90, 103, 216, 0.3) !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px !important;
+}
+
+.create-note-btn:hover {
+    background: linear-gradient(135deg, #4c51bf 0%, #5a67d8 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(90, 103, 216, 0.4) !important;
+    color: #ffffff !important;
+}
+
+/* Enhanced Note Cards */
+.note-card {
+    background: rgba(45, 55, 72, 0.8) !important;
+    border: 1px solid rgba(90, 103, 216, 0.2) !important;
+    border-radius: 16px !important;
+    margin: 1rem 0 !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+}
+
+.note-card:hover {
+    border-color: rgba(90, 103, 216, 0.4) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(90, 103, 216, 0.15) !important;
+}
+
+.note-card .card-header {
+    background: rgba(90, 103, 216, 0.1) !important;
+    border-bottom: 1px solid rgba(90, 103, 216, 0.2) !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 16px 16px 0 0 !important;
+}
+
+.note-title {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.note-title:hover {
+    color: #9fa8ff !important;
+    text-shadow: 0 0 8px rgba(159, 168, 255, 0.5) !important;
+}
+
+.note-actions {
+    display: flex !important;
+    gap: 0.5rem !important;
+}
+
+.note-edit-btn {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.note-edit-btn:hover {
+    background: linear-gradient(135deg, #38a169 0%, #2f855a 100%) !important;
+    transform: translateY(-1px) !important;
+    color: #ffffff !important;
+}
+
+.note-delete-btn {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+}
+
+.note-delete-btn:hover {
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%) !important;
+    transform: translateY(-1px) !important;
+    color: #ffffff !important;
+}
+
+/* Note Content Styling */
+.note-card .card-body {
+    background: rgba(26, 32, 44, 0.8) !important;
+    color: #e2e8f0 !important;
+    padding: 1.5rem !important;
+}
+
+.note-category-badge {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px !important;
+    font-size: 0.875rem !important;
+}
+
+.note-content {
+    color: #cbd5e0 !important;
+    line-height: 1.6 !important;
+    margin: 1rem 0 !important;
+}
+
+.note-content h1,
+.note-content h2,
+.note-content h3,
+.note-content h4,
+.note-content h5,
+.note-content h6 {
+    color: #ffffff !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.note-content code {
+    background: rgba(90, 103, 216, 0.2) !important;
+    color: #9fa8ff !important;
+    padding: 0.2rem 0.4rem !important;
+    border-radius: 4px !important;
+}
+
+.note-content blockquote {
+    border-left: 4px solid #5a67d8 !important;
+    padding-left: 1rem !important;
+    margin: 1rem 0 !important;
+    color: #a0aec0 !important;
+}
+
+.note-footer {
+    color: #718096 !important;
+    font-size: 0.875rem !important;
+    font-style: italic !important;
+}
+
+/* Empty State */
+.empty-notes-card {
+    background: rgba(45, 55, 72, 0.6) !important;
+    border: 2px dashed rgba(90, 103, 216, 0.3) !important;
+    border-radius: 16px !important;
+    margin: 2rem 0 !important;
+    text-align: center !important;
+    padding: 3rem !important;
+}
+
+.empty-notes-card .card-body {
+    background: transparent !important;
+}
+
+.empty-notes-card h5 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+}
+
+.empty-notes-card p {
+    color: #a0aec0 !important;
+    margin: 0 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .create-note-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .create-note-btn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .note-card .card-header {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    .note-actions {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .note-edit-btn,
+    .note-delete-btn {
+        flex: 1 !important;
+    }
+}

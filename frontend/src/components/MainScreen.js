@@ -1,20 +1,20 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import './MainScreen.css'
 
-const MainScreen = ({ title, children }) => {
+const MainScreen = ({ title, children, variant = 'full' }) => {
   return (
     <div className='mainback'>
-      <Container>
+      <Container fluid={variant === 'full'}>
         <Row className="justify-content-center">
-          <Col lg={10} xl={8}>
-            <div className='page'>    
+          <Col xs={12}>
+            <div className={`page ${variant}`}>    
               {title && (
                 <>
                   <h1 className='heading'>{title}</h1>
                   <hr />
                 </>
               )}
-              <div className="content-wrapper">
+              <div className={`content-wrapper ${variant}`}>
                 {children}
               </div>
             </div>
