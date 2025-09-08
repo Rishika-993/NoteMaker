@@ -1,0 +1,33 @@
+:root {
+    /* 🎨 Indigo Themed Palette */
+    --color-primary-light: #9fa8ff;
+    /* Light Indigo */
+    --color-primary: #5a67d8;
+    /* Main Indigo */
+    --color-primary-dark: #3c4aa1;
+    /* Deep Indigo */
+
+    --color-bg: #0a0a0f;
+    /* Dark background */
+    --color-text: #ffffff;
+    /* Primary text */
+    --color-text-muted: #a0aec0;
+    /* Muted text (grayish-indigo) */
+
+    /* Shadows (tinted with indigo) */
+    --shadow-soft: 0 4px 15px rgba(90, 103, 216, 0.3);
+    --shadow-medium: 0 6px 20px rgba(90, 103, 216, 0.4);
+    --shadow-strong: 0 8px 30px rgba(90, 103, 216, 0.5);
+
+    /* Typography */
+    --font-size-title: clamp(2rem, 5vw, 4rem);
+    --font-size-subtitle: clamp(1rem, 2.5vw, 1.5rem);
+    --font-size-button: 1.2rem;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+}
+main{
+    background: #000;
+}

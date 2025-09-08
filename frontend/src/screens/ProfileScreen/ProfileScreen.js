@@ -77,7 +77,7 @@ const ProfileScreen = () => {
   };
 
   return (
-    <MainScreen title="EDIT PROFILE">
+    <MainScreen title="EDIT PROFILE" variant="full">
       <div>
         <Row className="profileContainer">
           <Col md={6}>

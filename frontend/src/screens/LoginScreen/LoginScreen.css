@@ -1,6 +1,61 @@
 .loginContainer {
     display: flex;
     flex-direction: column;
-    margin: 20px; 
-    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-light, #fff);
+    /* width: 100%; */
+    /* border: 1px solid rgba(90, 103, 216, 0.15); */
+    /* border-radius: 12px; */
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 20px;
+    position: relative;
+}
+
+.loginContainer form {
+    width: 100%;
+}
+
+.loginContainer .form-label {
+    font-weight: 500;
+    color: var(--color-accent-light, #cfd8ff);
+}
+
+.loginContainer .form-control {
+    border-radius: 10px;
+    border: 1px solid #5a67d8;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.loginContainer .form-control:focus {
+    border-color: #7f9cf5;
+    box-shadow: 0 0 0 0.25rem rgba(90, 103, 216, 0.25);
+}
+
+.loginContainer button {
+    width: 100%;
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #3c4aa1, #5a67d8);
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.loginContainer button:hover {
+    transform: scale(1.03);
+    background: linear-gradient(90deg, #5a67d8, #3c4aa1);
+}
+
+.loginContainer a {
+    color: #a5b4fc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.loginContainer a:hover {
+    color: #fff;
+    text-decoration: underline;
 }

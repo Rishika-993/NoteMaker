@@ -1,31 +1,102 @@
 .main {
-    min-height: 93vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url("../../bg.jpg");
-    background-position: center;
-    background-size: cover; 
+    background: var(--color-bg);
+    position: relative;
+    overflow: hidden;
 }
-.bg-body-tertiary{
-    border-bottom: #082746;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+/* Animated background */
+.main::before,
+.main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
 }
+
+.main::before {
+    background: radial-gradient(ellipse 1200px 600px at 20% 40%,
+            rgba(108, 99, 255, 0.1) 0%,
+            transparent 50%),
+        radial-gradient(ellipse 800px 400px at 80% 60%,
+            rgba(138, 121, 255, 0.08) 0%,
+            transparent 50%);
+    animation: slowFloat 8s ease-in-out infinite;
+}
+
+.main::after {
+    background: radial-gradient(circle at 30% 20%,
+            rgba(108, 99, 255, 0.05) 0%,
+            transparent 40%),
+        radial-gradient(circle at 70% 80%,
+            rgba(138, 121, 255, 0.03) 0%,
+            transparent 40%);
+    animation: gentleMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes slowFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(20px, -10px) scale(1.05);
+        opacity: 1;
+    }
+}
+
+@keyframes gentleMove {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(15px, 10px);
+        opacity: 0.4;
+    }
+}
+
 .title {
-    font-size: 10vw;
+    font-size: var(--font-size-title);
     text-align: center;
-    padding: 0 5vw;
+    color: var(--color-text);
+    text-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-left: 0.5rem;
 }
 
 .subtitle {
-    font-size: 1.5rem;
-    padding-top: 10px;
+    font-size: var(--font-size-subtitle);
+    padding-top: 20px;
     text-align: center;
+    color: var(--color-text-muted);
+    font-weight: 400;
 }
 
 .intro-text {
     width: 100%;
     text-align: center;
-    padding: 0 2vw;
+    padding: 20px 2vw 0;
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 .buttonContainer {
@@ -37,55 +108,61 @@
     padding: 0 5vw;
 }
 
+/* Button styling */
 .landingbutton {
     width: 40vw;
     max-width: 200px;
     min-width: 120px;
-    height: 50px;
-    font-size: 1rem;
-}
-.custom-dropdown .nav-link{
-    color: #f8f9fa !important;
-    font-size: 0.9rem;
-}
-.highlight {
-    color: #f8f9fa !important;
-    font-size: 0.9rem;
+    height: 45px;
+    font-size: var(--font-size-button);
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border: 1px solid rgba(108, 99, 255, 0.4);
+    color: var(--color-text);
+    border-radius: 12px;
+    transition: all var(--transition-medium);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Tablet screens */
-@media only screen and (min-width: 768px) {
-    .title {
-        font-size: 4vw;
-    }
+.landingbutton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
 
-    .subtitle {
-        font-size: 1.75rem;
-    }
+.landingbutton:hover::before {
+    left: 100%;
+}
 
+.landingbutton:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    border-color: rgba(138, 121, 255, 0.6);
+}
+
+.landingbutton:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive buttons */
+@media (min-width: 768px) {
     .landingbutton {
         width: 180px;
-        height: 55px;
-    }
-
-    .buttonContainer {
-        padding: 0 10vw;
+        height: 50px;
     }
 }
 
-/* Large desktops */
-@media only screen and (min-width: 1200px) {
-    .title {
-        font-size: 3vw;
-        padding: 0 10vw;
-    }
-
+@media (min-width: 1200px) {
     .landingbutton {
         width: 200px;
-        height: 60px;
-    }
-
-    .buttonContainer {
-        padding: 0 15vw;
+        height: 55px;
     }
 }

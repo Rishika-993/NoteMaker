@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -18,6 +18,7 @@ function SingleNote() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useNavigate();
+  const textareaRef = useRef(null);
 
   const notesUpdate = useSelector((state) => state.notesUpdate);
   const { loading, error } = notesUpdate;
@@ -27,6 +28,20 @@ function SingleNote() {
 
   const notesDelete = useSelector((state) => state.notesDelete);
   const { loading: loadingDelete, error: errorDelete } = notesDelete;
+
+  // Auto-resize textarea function
+  const autoResizeTextarea = (textarea) => {
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.max(textarea.scrollHeight, 120) + 'px'; // Minimum height of 120px
+    }
+  };
+
+  // Handle content change with auto-resize
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
+    autoResizeTextarea(e.target);
+  };
 
   useEffect(() => {
     const fetchNote = async () => {
@@ -46,10 +61,21 @@ function SingleNote() {
     fetchNote();
   }, [id, userInfo]);
 
+  // Auto-resize when content is loaded
+  useEffect(() => {
+    if (textareaRef.current && content) {
+      autoResizeTextarea(textareaRef.current);
+    }
+  }, [content]);
+
   const resetHandler = () => {
     setTitle("");
     setContent("");
     setCategory("");
+    // Reset textarea height when content is cleared
+    if (textareaRef.current) {
+      textareaRef.current.style.height = '120px';
+    }
   };
 
   const updateHandler = (e) => {
@@ -68,7 +94,7 @@ function SingleNote() {
   };
 
   return (
-    <MainScreen title="Edit Note">
+    <MainScreen title="Edit Note" variant="full">
       <Card>
         <Card.Header>Edit your Note</Card.Header>
         <Card.Body>
@@ -90,11 +116,17 @@ function SingleNote() {
             <Form.Group controlId="content" className="mt-3">
               <Form.Label>Content</Form.Label>
               <Form.Control
+                ref={textareaRef}
                 as="textarea"
-                rows={4}
                 placeholder="Enter the content"
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={handleContentChange}
+                style={{
+                  minHeight: '120px',
+                  resize: 'none',
+                  overflow: 'hidden',
+                  transition: 'height 0.2s ease'
+                }}
               />
             </Form.Group>
 

@@ -30,7 +30,7 @@ const LoginScreen = () => {
         dispatch(login(email, password));
     }
   return (
-    <MainScreen title="LOG IN">
+    <MainScreen title="LOG IN" variant="centered">
       <div className="loginContainer">
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
